@@ -36,9 +36,9 @@ export interface IRegionTime {
   day_of_week: number
   day_of_year: number
   dst: boolean
-  dst_from: any
+  dst_from: unknown
   dst_offset: number
-  dst_until: any
+  dst_until: unknown
   raw_offset: number
   timezone: string
   unixtime: number

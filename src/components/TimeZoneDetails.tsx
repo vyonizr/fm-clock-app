@@ -1,10 +1,10 @@
 import useCurrentTime from "../hooks/useTime";
-import IRegionTime from "../types/IRegionTime";
-import { determineDayOrNight } from "../utils";
+import { IRegionTime } from "../types"
+import { determineDayOrNight } from "../utils"
 
 interface ITimeZoneDetailsProps {
   isOpen: boolean
-  regionTime: IRegionTime
+  regionTime: IRegionTime | undefined
 }
 
 function TimeZoneDetails({
@@ -15,19 +15,19 @@ function TimeZoneDetails({
   const timeDetails = [
     {
       title: "Current Timezone",
-      value: regionTime.timezone || "-",
+      value: regionTime?.timezone || "-",
     },
     {
       title: "Day of the Year",
-      value: regionTime.day_of_year || "-",
+      value: regionTime?.day_of_year || "-",
     },
     {
       title: "Day of the Week",
-      value: regionTime.day_of_week || "-",
+      value: regionTime?.day_of_week || "-",
     },
     {
       title: "Week Number",
-      value: regionTime.week_number || "-",
+      value: regionTime?.week_number || "-",
     },
   ]
 
@@ -40,7 +40,7 @@ function TimeZoneDetails({
 
   return (
     <div
-      className={`grid grid-rows-4 gap-y-4 px-[1.625rem] py-12 text-[#303030] backdrop-blur-lg md:grid-flow-col md:grid-cols-[60%_40%] md:grid-rows-2 md:gap-y-10 md:px-16 md:py-[7.5rem] lg:gap-y-16 lg:py-[4.625rem] ${
+      className={`grid grid-rows-4 gap-y-4 px-[1.625rem] py-12 text-[#303030] backdrop-blur-lg md:grid-flow-col md:grid-cols-[60%_40%] md:grid-rows-2 md:gap-y-10 md:px-16 md:py-[7.5rem] lg:gap-y-16 lg:px-[10.375rem] lg:py-[4.625rem] ${
         isOpen ? "block" : "hidden"
       }`}
       style={mainComponentStyle}
