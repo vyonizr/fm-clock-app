@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div
-      className={`h-screen bg-cover bg-no-repeat font-inter text-white transition-all`}
+      className="h-screen bg-cover bg-no-repeat font-inter text-white transition-all"
       style={{
         backgroundImage: `url('${isMore ? NIGHT_BG_URL : DAY_BG_URL}')`,
       }}
@@ -88,14 +88,26 @@ function App() {
               <Greeting />
               <div className="mt-4 flex items-end">
                 <TimeDisplay />
-                <p className="font-light">{regionTime.abbreviation || "-"}</p>
+                <p
+                  className="font-light transition-opacity"
+                  style={{
+                    opacity: Object.keys(regionTime).length > 0 ? 1 : 0,
+                  }}
+                >
+                  {regionTime.abbreviation || "-"}
+                </p>
               </div>
-              <p className="mt-4 text-[0.938rem] font-bold uppercase tracking-[0.25rem]">
+              <p
+                className="mt-4 text-[0.938rem] font-bold uppercase tracking-[0.25rem] transition-opacity"
+                style={{ opacity: Object.keys(regionTime).length > 0 ? 1 : 0 }}
+              >
                 In {region.geoplugin_city || "-"},{" "}
                 {region.geoplugin_countryCode || "-"}
               </p>
               <button
-                className="mt-12 flex items-center rounded-full bg-white py-1 pl-4 pr-1 font-bold"
+                className={`mt-12 flex items-center rounded-full bg-white py-1 pl-4 pr-1 font-bold transition-opacity`}
+                style={{ opacity: Object.keys(regionTime).length > 0 ? 1 : 0 }}
+                disabled={Object.keys(regionTime).length === 0}
                 onClick={() => setIsMore((prevState: boolean) => !prevState)}
               >
                 <p className="text-xs uppercase tracking-[0.234rem] text-[#000] opacity-50">
