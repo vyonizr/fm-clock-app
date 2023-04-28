@@ -23,10 +23,10 @@ function TimeDisplay() {
   // }, [])
 
   return (
-    <p className='font-bold text-[6.25rem] leading-[5.15rem]'>
+    <p className="text-[6.25rem] font-bold leading-[5.15rem]">
       {formatTime(currentTime)}
     </p>
-  )
+  );
 }
 
 export default TimeDisplay

@@ -40,13 +40,13 @@ function Greeting() {
   const imageProps = handleIcon(formatGreeting(currentTime))
 
   return (
-    <div className='flex'>
+    <div className="flex">
       <img src={imageProps.url} alt={imageProps.alt} />
-      <p className='text-[0.938rem] uppercase tracking-[0.188rem] ml-4'>
+      <p className="ml-4 text-[0.938rem] uppercase tracking-[0.188rem]">
         {formatGreeting(currentTime)}
       </p>
     </div>
-  )
+  );
 }
 
 export default Greeting

@@ -58,54 +58,54 @@ function App() {
 
   return (
     <div
-      className={`transition-all text-white bg-cover h-screen bg-no-repeat font-inter`}
+      className={`h-screen bg-cover bg-no-repeat font-inter text-white transition-all`}
       style={{
         backgroundImage: `url('${isMore ? NIGHT_BG_URL : DAY_BG_URL}')`,
       }}
     >
-      <div className='absolute top-0 left-0 h-full w-full bg-[#000] bg-opacity-40'>
-        <main className='relative z-10 h-full w-full flex flex-col'>
-          <div className='h-full flex flex-col justify-between px-[1.625rem] pt-8 pb-10'>
+      <div className="absolute left-0 top-0 h-full w-full bg-[#000] bg-opacity-40">
+        <main className="relative z-10 flex h-full w-full flex-col">
+          <div className="flex h-full flex-col justify-between px-[1.625rem] pb-10 pt-8">
             <div
-              className={`transition-all grid grid-cols-[1fr_max-content] items-start gap-x-4 ${
-                isMore ? 'collapse opacity-0' : 'visible'
+              className={`grid grid-cols-[1fr_max-content] items-start gap-x-4 transition-all ${
+                isMore ? "collapse opacity-0" : "visible"
               }`}
             >
-              <div className='text-xs'>
-                <p className='leading-[1.375rem]'>
+              <div className="text-xs">
+                <p className="leading-[1.375rem]">
                   “The science of operations, as derived from mathematics more
                   especially, is a science of itself, and has its own abstract
                   truth and value.”
                 </p>
-                <p className='mt-2 font-bold'>Ada Lovelace</p>
+                <p className="mt-2 font-bold">Ada Lovelace</p>
               </div>
               <button>
-                <img src='/assets/desktop/icon-refresh.svg' alt='refresh' />
+                <img src="/assets/desktop/icon-refresh.svg" alt="refresh" />
               </button>
             </div>
             <div>
               <Greeting />
-              <div className='flex items-end mt-4'>
+              <div className="mt-4 flex items-end">
                 <TimeDisplay />
-                <p className='font-light'>{regionTime.abbreviation || '-'}</p>
+                <p className="font-light">{regionTime.abbreviation || "-"}</p>
               </div>
-              <p className='mt-4 text-[0.938rem] font-bold uppercase tracking-[0.25rem]'>
-                In {region.geoplugin_city || '-'},{' '}
-                {region.geoplugin_countryCode || '-'}
+              <p className="mt-4 text-[0.938rem] font-bold uppercase tracking-[0.25rem]">
+                In {region.geoplugin_city || "-"},{" "}
+                {region.geoplugin_countryCode || "-"}
               </p>
               <button
-                className='flex items-center mt-12 bg-white rounded-full font-bold pl-4 pr-1 py-1'
+                className="mt-12 flex items-center rounded-full bg-white py-1 pl-4 pr-1 font-bold"
                 onClick={() => setIsMore((prevState: boolean) => !prevState)}
               >
-                <p className='uppercase text-[#000] opacity-50 tracking-[0.234rem] text-xs'>
-                  {isMore ? 'Less' : 'More'}
+                <p className="text-xs uppercase tracking-[0.234rem] text-[#000] opacity-50">
+                  {isMore ? "Less" : "More"}
                 </p>
-                <div className='h-8 w-8 bg-[#303030] rounded-full flex items-center justify-center ml-4'>
+                <div className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#303030]">
                   <img
-                    src='/assets/desktop/icon-arrow-down.svg'
-                    alt='arrow down'
+                    src="/assets/desktop/icon-arrow-down.svg"
+                    alt="arrow down"
                     className={`transition duration-300 ease-out ${
-                      isMore ? '-scale-100' : 'scale-100'
+                      isMore ? "-scale-100" : "scale-100"
                     }`}
                   />
                 </div>
@@ -113,17 +113,17 @@ function App() {
             </div>
           </div>
           <div
-            className={`bg-[rgb(255,255,255)]/80 px-[1.625rem] mb-10 text-[#303030] py-12 backdrop-blur-2xl ${
-              isMore ? 'block' : 'hidden'
+            className={`mb-10 bg-[rgb(255,255,255)]/80 px-[1.625rem] py-12 text-[#303030] backdrop-blur-2xl ${
+              isMore ? "block" : "hidden"
             }`}
           >
             {timeDetails.map((timeDetail, i) => (
               <div
-                className='grid grid-cols-2 items-center time-detail-item'
+                className="time-detail-item grid grid-cols-2 items-center"
                 key={i}
               >
-                <p className='uppercase text-[0.625rem]'>{timeDetail.title}</p>
-                <p className='text-right font-bold text-xl'>
+                <p className="text-[0.625rem] uppercase">{timeDetail.title}</p>
+                <p className="text-right text-xl font-bold">
                   {timeDetail.value}
                 </p>
               </div>
@@ -132,7 +132,7 @@ function App() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 export default App
