@@ -2,59 +2,60 @@ import React from 'react'
 import { fetchIPAdress, fetchRegion, fetchRegionTime } from './utils'
 import TimeDisplay from './components/TimeDisplay'
 import Greeting from './components/Greeting'
-import { IRegion, IRegionTime } from './types'
+import TimeZoneDetails from "./components/TimeZoneDetails";
+import { IRegion, IRegionTime } from "./types";
 
-const DAY_BG_URL = '/assets/mobile/bg-image-daytime.jpg'
-const NIGHT_BG_URL = '/assets/mobile/bg-image-nighttime.jpg'
+const DAY_BG_URL = "/assets/mobile/bg-image-daytime.jpg";
+const NIGHT_BG_URL = "/assets/mobile/bg-image-nighttime.jpg";
 
 function App() {
-  const [isMore, setIsMore] = React.useState(false)
-  const [ipAddress, setIpAddress] = React.useState('')
-  const [region, setRegion] = React.useState<IRegion>({})
-  const [regionTime, setRegionTime] = React.useState<IRegionTime>({})
+  const [isMore, setIsMore] = React.useState(false);
+  const [ipAddress, setIpAddress] = React.useState("");
+  const [region, setRegion] = React.useState<IRegion>({});
+  const [regionTime, setRegionTime] = React.useState<IRegionTime>({});
 
   const timeDetails = [
     {
-      title: 'Current Timezone',
-      value: regionTime.timezone || '-',
+      title: "Current Timezone",
+      value: regionTime.timezone || "-",
     },
     {
-      title: 'Day of the Year',
-      value: regionTime.day_of_year || '-',
+      title: "Day of the Year",
+      value: regionTime.day_of_year || "-",
     },
     {
-      title: 'Day of the Week',
-      value: regionTime.day_of_week || '-',
+      title: "Day of the Week",
+      value: regionTime.day_of_week || "-",
     },
     {
-      title: 'Week Number',
-      value: regionTime.week_number || '-',
+      title: "Week Number",
+      value: regionTime.week_number || "-",
     },
-  ]
+  ];
 
   React.useEffect(() => {
     const getIPAddress = async () => {
-      const { ip } = await fetchIPAdress()
-      setIpAddress(ip)
-    }
+      const { ip } = await fetchIPAdress();
+      setIpAddress(ip);
+    };
 
-    getIPAddress()
+    getIPAddress();
 
     if (ipAddress.length > 0) {
       const getRegion = async () => {
-        const data = await fetchRegion(ipAddress)
-        setRegion(data)
-      }
+        const data = await fetchRegion(ipAddress);
+        setRegion(data);
+      };
 
       const getRegionTime = async () => {
-        const data = await fetchRegionTime(ipAddress)
-        setRegionTime(data)
-      }
+        const data = await fetchRegionTime(ipAddress);
+        setRegionTime(data);
+      };
 
-      getRegion()
-      getRegionTime()
+      getRegion();
+      getRegionTime();
     }
-  }, [ipAddress])
+  }, [ipAddress]);
 
   return (
     <div
@@ -112,23 +113,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div
-            className={`mb-10 bg-[rgb(255,255,255)]/80 px-[1.625rem] py-12 text-[#303030] backdrop-blur-2xl ${
-              isMore ? "block" : "hidden"
-            }`}
-          >
-            {timeDetails.map((timeDetail, i) => (
-              <div
-                className="time-detail-item grid grid-cols-2 items-center"
-                key={i}
-              >
-                <p className="text-[0.625rem] uppercase">{timeDetail.title}</p>
-                <p className="text-right text-xl font-bold">
-                  {timeDetail.value}
-                </p>
-              </div>
-            ))}
-          </div>
+          <TimeZoneDetails isOpen={isMore} regionTime={regionTime} />
         </main>
       </div>
     </div>

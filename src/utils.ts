@@ -33,4 +33,22 @@ async function fetchQuote() {
   return responseJSON
 }
 
-export { fetchIPAdress, fetchRegion, fetchRegionTime, fetchQuote }
+function determineDayOrNight(time: Date): string {
+  const hours = time.getHours();
+
+  if (hours < 5) {
+    return "night";
+  } else if (hours < 18) {
+    return "day";
+  }
+
+  return "night";
+}
+
+export {
+  fetchIPAdress,
+  fetchRegion,
+  fetchRegionTime,
+  fetchQuote,
+  determineDayOrNight,
+};
