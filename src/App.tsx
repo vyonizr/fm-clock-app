@@ -51,12 +51,13 @@ function App() {
 
   return (
     <div
-      className="h-screen bg-cover bg-no-repeat font-inter text-white transition-all"
-      style={{
-        backgroundImage: `url('${isDay ? DAY_BG_URL : NIGHT_BG_URL}')`,
-      }}
+      className={`h-screen bg-cover bg-no-repeat font-inter text-white transition-all ${
+        isDay
+          ? "bg-mobile-day md:bg-tablet-day lg:bg-desktop-day"
+          : "bg-mobile-night md:bg-tablet-night lg:bg-desktop-night"
+      }`}
     >
-      <div className="absolute left-0 top-0 h-full w-full bg-[#000] bg-opacity-40">
+      <div className="absolute left-0 top-0 h-full w-full bg-black bg-opacity-40">
         <main className="relative z-10 flex h-full w-full flex-col">
           <div className="flex h-full flex-col justify-between px-[1.625rem] pb-10 pt-8">
             <Quote isVisible={!isMore} />
@@ -86,7 +87,7 @@ function App() {
                 disabled={Object.keys(regionTime).length === 0}
                 onClick={() => setIsMore((prevState: boolean) => !prevState)}
               >
-                <p className="text-xs uppercase tracking-[0.234rem] text-[#000] opacity-50">
+                <p className="text-xs uppercase tracking-[0.234rem] text-black opacity-50">
                   {isMore ? "Less" : "More"}
                 </p>
                 <div className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#303030]">
