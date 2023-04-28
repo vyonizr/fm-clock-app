@@ -43,7 +43,7 @@ function Quote({ isVisible }: IQuoteProps) {
       }`}
     >
       <div
-        className={`text-xs transition-opacity ${
+        className={`text-xs transition-opacity md:text-lg ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
       >

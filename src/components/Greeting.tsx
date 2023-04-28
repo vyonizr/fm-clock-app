@@ -40,13 +40,14 @@ function Greeting() {
   const imageProps = handleIcon(formatGreeting(currentTime))
 
   return (
-    <div className="flex">
+    <div className="grid grid-cols-[24px_1fr] gap-x-4">
       <img src={imageProps.url} alt={imageProps.alt} />
-      <p className="ml-4 text-[0.938rem] uppercase tracking-[0.188rem]">
+      <p className="text-[0.938rem] uppercase tracking-[0.188rem] md:text-lg md:tracking-[0.225rem]">
         {formatGreeting(currentTime)}
+        <span className="hidden md:inline-block">{", It's currently"}</span>
       </p>
     </div>
-  );
+  )
 }
 
 export default Greeting

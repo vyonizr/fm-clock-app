@@ -57,16 +57,16 @@ function App() {
           : "bg-mobile-night md:bg-tablet-night lg:bg-desktop-night"
       }`}
     >
-      <div className="absolute left-0 top-0 h-full w-full bg-black bg-opacity-40">
+      <div className="absolute left-0 top-0 h-full w-full">
         <main className="relative z-10 flex h-full w-full flex-col">
-          <div className="flex h-full flex-col justify-between px-[1.625rem] pb-10 pt-8">
+          <div className="flex h-full flex-col justify-between bg-black bg-opacity-40 px-[1.625rem] pb-10 pt-8 md:pb-16 md:pl-16 md:pr-[8.125rem] md:pt-20">
             <Quote isVisible={!isMore} />
             <div>
               <Greeting />
               <div className="mt-4 flex items-end">
                 <TimeDisplay />
                 <p
-                  className="font-light transition-opacity"
+                  className="font-light transition-opacity md:text-[2rem]"
                   style={{
                     opacity: Object.keys(regionTime).length > 0 ? 1 : 0,
                   }}
@@ -75,22 +75,22 @@ function App() {
                 </p>
               </div>
               <p
-                className="mt-4 text-[0.938rem] font-bold uppercase tracking-[0.25rem] transition-opacity"
+                className="mt-4 text-[0.938rem] font-bold uppercase tracking-[0.188rem] transition-opacity md:text-lg md:tracking-[0.225rem]"
                 style={{ opacity: Object.keys(regionTime).length > 0 ? 1 : 0 }}
               >
                 In {region.geoplugin_city || "-"},{" "}
                 {region.geoplugin_countryCode || "-"}
               </p>
               <button
-                className={`mt-12 flex items-center rounded-full bg-white py-1 pl-4 pr-1 font-bold transition-opacity`}
+                className={`mt-12 flex items-center rounded-full bg-white py-1 pl-4 pr-1 font-bold transition-opacity md:py-2 md:pl-6 md:pr-2`}
                 style={{ opacity: Object.keys(regionTime).length > 0 ? 1 : 0 }}
                 disabled={Object.keys(regionTime).length === 0}
                 onClick={() => setIsMore((prevState: boolean) => !prevState)}
               >
-                <p className="text-xs uppercase tracking-[0.234rem] text-black opacity-50">
+                <p className="text-xs uppercase tracking-[0.234rem] text-black opacity-50 md:text-base">
                   {isMore ? "Less" : "More"}
                 </p>
-                <div className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#303030]">
+                <div className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#303030] transition hover:bg-[#999999] md:h-10 md:w-10">
                   <img
                     src="/assets/desktop/icon-arrow-down.svg"
                     alt="arrow down"

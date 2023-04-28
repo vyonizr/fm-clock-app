@@ -40,17 +40,22 @@ function TimeZoneDetails({
 
   return (
     <div
-      className={`px-[1.625rem] py-12 text-[#303030] backdrop-blur-2xl ${
-        isOpen ? "block" : "hidden"
+      className={`px-[1.625rem] py-12 text-[#303030] backdrop-blur-lg md:grid-cols-[60%_40%] md:gap-y-10 md:px-16 md:py-[7.5rem] ${
+        isOpen ? "block md:grid" : "hidden"
       }`}
       style={mainComponentStyle}
     >
       {timeDetails.map((timeDetail, i) => (
-        <div className="time-detail-item grid grid-cols-2 items-center" key={i}>
-          <p className="text-[0.625rem] uppercase tracking-[0.125rem]">
+        <div
+          className="time-detail-item grid grid-cols-2 items-center md:mt-0 md:grid-cols-none md:grid-rows-2"
+          key={i}
+        >
+          <p className="text-[0.625rem] uppercase tracking-[0.125rem] md:text-xs md:tracking-[0.163rem]">
             {timeDetail.title}
           </p>
-          <p className="text-right text-xl font-bold">{timeDetail.value}</p>
+          <p className="text-right text-xl font-bold md:text-left md:text-[2.5rem]">
+            {timeDetail.value}
+          </p>
         </div>
       ))}
     </div>
