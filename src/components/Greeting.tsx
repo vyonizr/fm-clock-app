@@ -42,7 +42,7 @@ function Greeting() {
   return (
     <div className="grid grid-cols-[24px_1fr] gap-x-4">
       <img src={imageProps.url} alt={imageProps.alt} />
-      <p className="text-[0.938rem] uppercase tracking-[0.188rem] md:text-lg md:tracking-[0.225rem]">
+      <p className="text-[0.938rem] uppercase tracking-[0.188rem] md:text-lg md:tracking-[0.225rem] lg:text-xl lg:tracking-[0.25rem]">
         {formatGreeting(currentTime)}
         <span className="hidden md:inline-block">{", It's currently"}</span>
       </p>

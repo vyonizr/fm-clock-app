@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.time-detail-item:not(:first-child) {
-  @apply mt-4;
+button:hover .circular-icon {
+  @apply bg-[#999999];
 }

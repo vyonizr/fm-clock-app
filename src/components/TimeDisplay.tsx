@@ -11,7 +11,7 @@ function TimeDisplay() {
   }
 
   return (
-    <p className="text-[6.25rem] font-bold leading-[5.15rem] md:text-[10.938rem] md:leading-[9.5rem]">
+    <p className="text-[6.25rem] font-bold leading-[5.15rem] md:text-[10.938rem] md:leading-[9.5rem] lg:text-[12.5rem] lg:leading-[11rem] lg:-tracking-[0.313rem]">
       {formatTime(currentTime)}
     </p>
   )
