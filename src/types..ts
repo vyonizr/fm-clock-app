@@ -46,3 +46,14 @@ export interface IRegionTime {
   utc_offset: string
   week_number: number
 }
+
+export interface IQuoteResponse {
+  _id: string
+  content: string
+  author: string
+  tags: string[]
+  authorSlug: string
+  length: number
+  dateAdded: string
+  dateModified: string
+}

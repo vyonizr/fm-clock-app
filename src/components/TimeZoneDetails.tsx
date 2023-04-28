@@ -3,15 +3,15 @@ import IRegionTime from "../types/IRegionTime";
 import { determineDayOrNight } from "../utils";
 
 interface ITimeZoneDetailsProps {
-  isOpen: boolean;
-  regionTime: IRegionTime;
+  isOpen: boolean
+  regionTime: IRegionTime
 }
 
 function TimeZoneDetails({
   isOpen = false,
   regionTime,
 }: ITimeZoneDetailsProps) {
-  const { currentTime } = useCurrentTime();
+  const { currentTime } = useCurrentTime()
   const timeDetails = [
     {
       title: "Current Timezone",
@@ -29,14 +29,14 @@ function TimeZoneDetails({
       title: "Week Number",
       value: regionTime.week_number || "-",
     },
-  ];
+  ]
 
-  const isDay = determineDayOrNight(currentTime) === "day";
+  const isDay = determineDayOrNight(currentTime) === "day"
 
   const mainComponentStyle = {
     color: isDay ? "#303030" : "#fff",
-    backgroundColor: isDay ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)",
-  };
+    backgroundColor: isDay ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.5)",
+  }
 
   return (
     <div
@@ -52,7 +52,7 @@ function TimeZoneDetails({
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default TimeZoneDetails;

@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchIPAdress, fetchRegion, fetchRegionTime } from './utils'
 import TimeDisplay from './components/TimeDisplay'
 import Greeting from './components/Greeting'
+import Quote from "./components/Quote";
 import TimeZoneDetails from "./components/TimeZoneDetails";
 import { IRegion, IRegionTime } from "./types";
 
@@ -13,25 +14,6 @@ function App() {
   const [ipAddress, setIpAddress] = React.useState("");
   const [region, setRegion] = React.useState<IRegion>({});
   const [regionTime, setRegionTime] = React.useState<IRegionTime>({});
-
-  const timeDetails = [
-    {
-      title: "Current Timezone",
-      value: regionTime.timezone || "-",
-    },
-    {
-      title: "Day of the Year",
-      value: regionTime.day_of_year || "-",
-    },
-    {
-      title: "Day of the Week",
-      value: regionTime.day_of_week || "-",
-    },
-    {
-      title: "Week Number",
-      value: regionTime.week_number || "-",
-    },
-  ];
 
   React.useEffect(() => {
     const getIPAddress = async () => {
@@ -67,23 +49,7 @@ function App() {
       <div className="absolute left-0 top-0 h-full w-full bg-[#000] bg-opacity-40">
         <main className="relative z-10 flex h-full w-full flex-col">
           <div className="flex h-full flex-col justify-between px-[1.625rem] pb-10 pt-8">
-            <div
-              className={`grid grid-cols-[1fr_max-content] items-start gap-x-4 transition-all ${
-                isMore ? "collapse opacity-0" : "visible"
-              }`}
-            >
-              <div className="text-xs">
-                <p className="leading-[1.375rem]">
-                  “The science of operations, as derived from mathematics more
-                  especially, is a science of itself, and has its own abstract
-                  truth and value.”
-                </p>
-                <p className="mt-2 font-bold">Ada Lovelace</p>
-              </div>
-              <button>
-                <img src="/assets/desktop/icon-refresh.svg" alt="refresh" />
-              </button>
-            </div>
+            <Quote isVisible={!isMore} />
             <div>
               <Greeting />
               <div className="mt-4 flex items-end">
