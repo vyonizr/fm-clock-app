@@ -47,7 +47,9 @@ function TimeZoneDetails({
     >
       {timeDetails.map((timeDetail, i) => (
         <div className="time-detail-item grid grid-cols-2 items-center" key={i}>
-          <p className="text-[0.625rem] uppercase">{timeDetail.title}</p>
+          <p className="text-[0.625rem] uppercase tracking-[0.125rem]">
+            {timeDetail.title}
+          </p>
           <p className="text-right text-xl font-bold">{timeDetail.value}</p>
         </div>
       ))}
