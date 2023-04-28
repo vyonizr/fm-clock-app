@@ -40,7 +40,7 @@ function TimeZoneDetails({
 
   return (
     <div
-      className={`mb-10 px-[1.625rem] py-12 text-[#303030] backdrop-blur-2xl ${
+      className={`px-[1.625rem] py-12 text-[#303030] backdrop-blur-2xl ${
         isOpen ? "block" : "hidden"
       }`}
       style={mainComponentStyle}

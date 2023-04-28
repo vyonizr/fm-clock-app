@@ -1,49 +1,59 @@
 import React from 'react'
-import { fetchIPAdress, fetchRegion, fetchRegionTime } from './utils'
-import TimeDisplay from './components/TimeDisplay'
-import Greeting from './components/Greeting'
-import Quote from "./components/Quote";
-import TimeZoneDetails from "./components/TimeZoneDetails";
-import { IRegion, IRegionTime } from "./types";
+import TimeDisplay from "./components/TimeDisplay"
+import Greeting from "./components/Greeting"
+import Quote from "./components/Quote"
+import TimeZoneDetails from "./components/TimeZoneDetails"
+import useCurrentTime from "./hooks/useTime"
+import { IRegion, IRegionTime } from "./types"
+import {
+  fetchIPAdress,
+  fetchRegion,
+  fetchRegionTime,
+  determineDayOrNight,
+} from "./utils"
 
-const DAY_BG_URL = "/assets/mobile/bg-image-daytime.jpg";
-const NIGHT_BG_URL = "/assets/mobile/bg-image-nighttime.jpg";
+const DAY_BG_URL = "/assets/mobile/bg-image-daytime.jpg"
+const NIGHT_BG_URL = "/assets/mobile/bg-image-nighttime.jpg"
 
 function App() {
-  const [isMore, setIsMore] = React.useState(false);
-  const [ipAddress, setIpAddress] = React.useState("");
-  const [region, setRegion] = React.useState<IRegion>({});
-  const [regionTime, setRegionTime] = React.useState<IRegionTime>({});
+  const { currentTime } = useCurrentTime()
+
+  const [isMore, setIsMore] = React.useState(false)
+  const [ipAddress, setIpAddress] = React.useState("")
+  const [region, setRegion] = React.useState<IRegion>({})
+  const [regionTime, setRegionTime] = React.useState<IRegionTime>({})
+
+  const isDay = determineDayOrNight(currentTime) === "day"
 
   React.useEffect(() => {
     const getIPAddress = async () => {
-      const { ip } = await fetchIPAdress();
-      setIpAddress(ip);
-    };
+      const { ip } = await fetchIPAdress()
+      setIpAddress(ip)
+    }
 
-    getIPAddress();
+    const getRegion = async () => {
+      const data = await fetchRegion(ipAddress)
+      setRegion(data)
+    }
+
+    const getRegionTime = async () => {
+      const data = await fetchRegionTime(ipAddress)
+      setRegionTime(data)
+    }
+
+    getIPAddress()
 
     if (ipAddress.length > 0) {
-      const getRegion = async () => {
-        const data = await fetchRegion(ipAddress);
-        setRegion(data);
-      };
-
-      const getRegionTime = async () => {
-        const data = await fetchRegionTime(ipAddress);
-        setRegionTime(data);
-      };
-
-      getRegion();
-      getRegionTime();
+      getRegion()
+      getRegionTime()
     }
-  }, [ipAddress]);
+  }, [ipAddress])
 
   return (
     <div
       className="h-screen bg-cover bg-no-repeat font-inter text-white transition-all"
       style={{
-        backgroundImage: `url('${isMore ? NIGHT_BG_URL : DAY_BG_URL}')`,
+        backgroundImage: `url('${isDay ? DAY_BG_URL : NIGHT_BG_URL}')`,
       }}
     >
       <div className="absolute left-0 top-0 h-full w-full bg-[#000] bg-opacity-40">
@@ -95,7 +105,7 @@ function App() {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
 export default App

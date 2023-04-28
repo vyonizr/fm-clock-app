@@ -12,7 +12,7 @@ interface IQuote {
 
 function Quote({ isVisible }: IQuoteProps) {
   const [quote, setQuote] = React.useState<IQuote>({});
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true)
 
   const getQuote = async () => {
     try {
