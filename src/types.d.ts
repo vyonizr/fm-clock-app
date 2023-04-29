@@ -1,32 +1,48 @@
+// export interface IIPAdress {
+//   ip: string
+// }
+
 export interface IIPAdress {
+  fl: string
+  h: string
   ip: string
+  ts: string
+  visit_scheme: string
+  uag: string
+  colo: string
+  sliver: string
+  http: string
+  loc: string
+  tls: string
+  sni: string
+  warp: string
+  gateway: string
+  rbi: string
+  kex: string
 }
 
 export interface IRegion {
-  geoplugin_request: string
-  geoplugin_status: number
-  geoplugin_delay: string
-  geoplugin_credit: string
-  geoplugin_city: string
-  geoplugin_region: string
-  geoplugin_regionCode: string
-  geoplugin_regionName: string
-  geoplugin_areaCode: string
-  geoplugin_dmaCode: string
-  geoplugin_countryCode: string
-  geoplugin_countryName: string
-  geoplugin_inEU: number
-  geoplugin_euVATrate: boolean
-  geoplugin_continentCode: string
-  geoplugin_continentName: string
-  geoplugin_latitude: string
-  geoplugin_longitude: string
-  geoplugin_locationAccuracyRadius: string
-  geoplugin_timezone: string
-  geoplugin_currencyCode: string
-  geoplugin_currencySymbol: string
-  geoplugin_currencySymbol_UTF8: string
-  geoplugin_currencyConverter: number
+  status: string
+  continent: string
+  country: string
+  countryCode: string
+  regionName: string
+  city: string
+  zip: string
+  lat: number
+  lon: number
+  timezone: string
+  currency: string
+  isp: string
+  org: string
+  as: string
+  reverse: string
+  mobile: boolean
+  proxy: boolean
+  hosting: boolean
+  ip: string
+  cached: boolean
+  cacheTimestamp: number
 }
 
 export interface IRegionTime {

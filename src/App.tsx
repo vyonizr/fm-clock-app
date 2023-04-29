@@ -88,14 +88,13 @@ function App() {
                     opacity: regionTime !== undefined ? 1 : 0,
                   }}
                 >
-                  In {region?.geoplugin_city || "-"},{" "}
-                  {region?.geoplugin_countryCode || "-"}
+                  In {region?.city || "-"}, {region?.countryCode || "-"}
                 </p>
               </div>
               <button
                 className={`mt-12 flex w-fit items-center rounded-full bg-white py-1 pl-4 pr-1 font-bold transition-opacity md:py-2 md:pl-6 md:pr-2`}
                 style={{ opacity: regionTime !== undefined ? 1 : 0 }}
-                disabled={regionTime !== undefined}
+                disabled={regionTime === undefined}
                 onClick={() => setIsMore((prevState: boolean) => !prevState)}
               >
                 <p className="text-xs uppercase tracking-[0.234rem] text-black opacity-50 md:text-base md:tracking-[0.313rem]">

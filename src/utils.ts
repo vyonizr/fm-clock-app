@@ -7,28 +7,26 @@ import {
 
 import { IIPAdress, IRegion, IRegionTime, IQuoteResponse } from "./types";
 
-async function fetchIPAdress(): Promise<IIPAdress> {
-  const response = await fetch(`${IP_TRACKING_BASE_URL}?format=json`);
-  const responseJSON = await response.json();
-  return responseJSON;
-}
-
-// async function fetchIPCloudflare(): Promise<IIPAdress> {
-//   const data = await fetch("https://1.1.1.1/cdn-cgi/trace").then((res) =>
-//     res.text()
-//   )
-
-//   const dataArray = data
-//     .trim()
-//     .split("\n")
-//     .map((e) => e.split("="))
-//   return Object.fromEntries(dataArray)
+// async function fetchIPAdress(): Promise<IIPAdress> {
+//   const response = await fetch(`${IP_TRACKING_BASE_URL}?format=json`);
+//   const responseJSON = await response.json();
+//   return responseJSON;
 // }
 
+async function fetchIPAdress(): Promise<IIPAdress> {
+  const data = await fetch(IP_TRACKING_BASE_URL).then((res) =>
+    res.text()
+  )
+
+  const dataArray = data
+    .trim()
+    .split("\n")
+    .map((e) => e.split("="))
+  return Object.fromEntries(dataArray)
+}
+
 async function fetchRegion(ipAddress: string): Promise<IRegion> {
-  const response = await fetch(
-    `${REGION_TRACKING_BASE_URL}/json.gp?ip=${ipAddress}`
-  );
+  const response = await fetch(`${REGION_TRACKING_BASE_URL}/ipgeo/${ipAddress}`)
   const responseJSON = await response.json();
   return responseJSON;
 }
