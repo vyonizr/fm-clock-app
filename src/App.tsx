@@ -2,27 +2,18 @@ import React from 'react'
 import TimeDisplay from "./components/TimeDisplay"
 import Greeting from "./components/Greeting"
 import Quote from "./components/Quote"
+import Background from "./components/Background"
 import TimeZoneDetails from "./components/TimeZoneDetails"
-import useCurrentTime from "./hooks/useTime"
 import { IRegion, IRegionTime } from "./types"
-import {
-  fetchIPAdress,
-  fetchRegion,
-  fetchRegionTime,
-  determineDayOrNight,
-} from "./utils"
+import { fetchIPAdress, fetchRegion, fetchRegionTime } from "./utils"
 
 function App() {
-  const { currentTime } = useCurrentTime()
-
   const [isMore, setIsMore] = React.useState(false)
   const [ipAddress, setIpAddress] = React.useState(
     localStorage.getItem("ip") || ""
   )
   const [region, setRegion] = React.useState<IRegion>()
   const [regionTime, setRegionTime] = React.useState<IRegionTime>()
-
-  const isDay = determineDayOrNight(currentTime) === "day"
 
   React.useEffect(() => {
     const getIPAddress = async () => {
@@ -53,14 +44,9 @@ function App() {
   }, [ipAddress])
 
   return (
-    <div
-      className={`h-screen bg-cover bg-no-repeat font-inter text-white transition-all ${
-        isDay
-          ? "bg-mobile-day md:bg-tablet-day lg:bg-desktop-day"
-          : "bg-mobile-night md:bg-tablet-night lg:bg-desktop-night"
-      }`}
-    >
-      <div className="absolute left-0 top-0 h-full w-full">
+    <>
+      <Background />
+      <div className="absolute left-0 top-0 h-full w-full font-inter text-white">
         <main className="relative z-10 flex h-full w-full flex-col">
           <div
             className={`flex h-full flex-col justify-between bg-black bg-opacity-40 px-[1.625rem] pb-10 pt-8 md:pb-16 md:pl-16 md:pr-[8.125rem] md:pt-20 lg:px-[10.375rem] ${
@@ -85,7 +71,7 @@ function App() {
                 <p
                   className="lg::tracking-[0.3rem] mt-4 text-[0.938rem] font-bold uppercase tracking-[0.188rem] transition-opacity md:text-lg md:tracking-[0.225rem] lg:text-2xl"
                   style={{
-                    opacity: regionTime !== undefined ? 1 : 0,
+                    opacity: region !== undefined ? 1 : 0,
                   }}
                 >
                   In {region?.city || "-"}, {region?.countryCode || "-"}
@@ -115,7 +101,7 @@ function App() {
           <TimeZoneDetails isOpen={isMore} regionTime={regionTime} />
         </main>
       </div>
-    </div>
+    </>
   )
 }
 
