@@ -13,6 +13,18 @@ async function fetchIPAdress(): Promise<IIPAdress> {
   return responseJSON;
 }
 
+// async function fetchIPCloudflare(): Promise<IIPAdress> {
+//   const data = await fetch("https://1.1.1.1/cdn-cgi/trace").then((res) =>
+//     res.text()
+//   )
+
+//   const dataArray = data
+//     .trim()
+//     .split("\n")
+//     .map((e) => e.split("="))
+//   return Object.fromEntries(dataArray)
+// }
+
 async function fetchRegion(ipAddress: string): Promise<IRegion> {
   const response = await fetch(
     `${REGION_TRACKING_BASE_URL}/json.gp?ip=${ipAddress}`

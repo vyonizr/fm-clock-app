@@ -11,11 +11,10 @@ interface IQuote {
 }
 
 function Quote({ isVisible }: IQuoteProps) {
-  const [quote, setQuote] = React.useState<IQuote>({});
+  const [quote, setQuote] = React.useState<IQuote | undefined>()
   const [isLoading, setIsLoading] = React.useState(true)
-  const [isInitialLoad, setIsInitialLoad] = React.useState(true)
 
-  const getQuote = async () => {
+  const getQuote = React.useCallback(async () => {
     try {
       setIsLoading(true)
       const data = await fetchQuote()
@@ -29,16 +28,13 @@ function Quote({ isVisible }: IQuoteProps) {
         author: "Ada Lovelace",
       })
     } finally {
-      if (isInitialLoad) {
-        setIsInitialLoad(false)
-      }
       setIsLoading(false)
     }
-  }
+  }, [])
 
   React.useEffect(() => {
     getQuote()
-  }, [])
+  }, [getQuote])
 
   return (
     <div
@@ -51,15 +47,10 @@ function Quote({ isVisible }: IQuoteProps) {
           isLoading ? "opacity-0" : "opacity-100"
         }`}
       >
-        <p className="leading-[1.375rem]">{`“${quote.text || "-"}”`}</p>
-        <p className="mt-2 font-bold">{quote.author || "-"}</p>
+        <p className="leading-[1.375rem]">{`“${quote?.text || "-"}”`}</p>
+        <p className="mt-2 font-bold">{quote?.author || "-"}</p>
       </div>
-      <button
-        className={`transition-opacity ${
-          isInitialLoad ? "opacity-0" : "opacity-100"
-        } ${isLoading ? "animate-spin" : ""}`}
-        onClick={getQuote}
-      >
+      <button className={isLoading ? "animate-spin" : ""} onClick={getQuote}>
         <img src="/assets/desktop/icon-refresh.svg" alt="refresh" />
       </button>
     </div>
