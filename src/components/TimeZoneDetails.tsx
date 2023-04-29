@@ -15,19 +15,19 @@ function TimeZoneDetails({
   const timeDetails = [
     {
       title: "Current Timezone",
-      value: regionTime?.timezone || "-",
+      value: regionTime?.timezone ?? "-",
     },
     {
       title: "Day of the Year",
-      value: regionTime?.day_of_year || "-",
+      value: regionTime?.day_of_year ?? "-",
     },
     {
       title: "Day of the Week",
-      value: regionTime?.day_of_week || "-",
+      value: regionTime?.day_of_week ?? "-",
     },
     {
       title: "Week Number",
-      value: regionTime?.week_number || "-",
+      value: regionTime?.week_number ?? "-",
     },
   ]
 
