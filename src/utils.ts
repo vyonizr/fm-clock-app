@@ -1,11 +1,11 @@
 import {
   IP_TRACKING_BASE_URL,
   REGION_TRACKING_BASE_URL,
-  WORLD_TIME_BASE_URL,
   QUOTE_BASE_URL,
-} from './constants'
+  CORS_WORLD_TIME_BASE_URL,
+} from "./constants"
 
-import { IIPAdress, IRegion, IRegionTime, IQuoteResponse } from "./types";
+import { IIPAdress, IRegion, IRegionTime, IQuoteResponse } from "./types"
 
 // async function fetchIPAdress(): Promise<IIPAdress> {
 //   const response = await fetch(`${IP_TRACKING_BASE_URL}?format=json`);
@@ -14,9 +14,7 @@ import { IIPAdress, IRegion, IRegionTime, IQuoteResponse } from "./types";
 // }
 
 async function fetchIPAdress(): Promise<IIPAdress> {
-  const data = await fetch(IP_TRACKING_BASE_URL).then((res) =>
-    res.text()
-  )
+  const data = await fetch(IP_TRACKING_BASE_URL).then((res) => res.text())
 
   const dataArray = data
     .trim()
@@ -27,14 +25,14 @@ async function fetchIPAdress(): Promise<IIPAdress> {
 
 async function fetchRegion(ipAddress: string): Promise<IRegion> {
   const response = await fetch(`${REGION_TRACKING_BASE_URL}/ipgeo/${ipAddress}`)
-  const responseJSON = await response.json();
-  return responseJSON;
+  const responseJSON = await response.json()
+  return responseJSON
 }
 
 async function fetchRegionTime(ipAddress: string): Promise<IRegionTime> {
-  const response = await fetch(`${WORLD_TIME_BASE_URL}/ip/${ipAddress}`);
-  const responseJSON = await response.json();
-  return responseJSON;
+  const response = await fetch(`${CORS_WORLD_TIME_BASE_URL}/ip/${ipAddress}`)
+  const responseJSON = await response.json()
+  return responseJSON
 }
 
 async function fetchQuote(): Promise<IQuoteResponse> {
