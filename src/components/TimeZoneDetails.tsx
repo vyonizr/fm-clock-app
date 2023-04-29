@@ -40,7 +40,7 @@ function TimeZoneDetails({
 
   return (
     <div
-      className={`grid grid-rows-4 gap-y-4 px-[1.625rem] py-12 text-[#303030] backdrop-blur-lg md:grid-flow-col md:grid-cols-[60%_40%] md:grid-rows-2 md:gap-y-10 md:px-16 md:py-[7.5rem] lg:gap-y-16 lg:px-[10.375rem] lg:py-[4.625rem] ${
+      className={`relative grid grid-rows-4 gap-y-4 px-[1.625rem] py-12 text-[#303030] backdrop-blur-lg md:grid-flow-col md:grid-cols-[60%_40%] md:grid-rows-2 md:gap-y-10 md:px-16 md:py-[7.5rem] lg:gap-y-16 lg:px-[10.375rem] lg:py-[4.625rem] ${
         isOpen ? "block" : "hidden"
       }`}
       style={mainComponentStyle}
@@ -58,6 +58,7 @@ function TimeZoneDetails({
           </p>
         </div>
       ))}
+      <div className="absolute inset-0 left-1/2 top-1/2 hidden h-[252px] w-[1px] -translate-x-1/2 -translate-y-1/2 bg-white lg:block" />
     </div>
   )
 }
