@@ -15,6 +15,7 @@ This is a solution to the [Clock app challenge on Frontend Mentor](https://www.f
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -35,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://github.com/vyonizr/fm-clock-app/)
+- [Live Site URL](https://fm-clock-app.vyonizr.com/)
 
 ## My process
 
@@ -57,8 +58,16 @@ Here are the API resources I used while working on this project:
 - http://www.geoplugin.net/json.gp?ip=xxx.xxx.xxx.xxx
 - http://worldtimeapi.org/api/ip/xxx.xxx.xxx.xxx
 - https://api.quotable.io/random
+- https://corsproxy.io
+- https://api.codetabs.com
 
 ## Author
 
 - [Website](https://vyonizr.com/)
 - Frontend Mentor - [@vyonizr](https://www.frontendmentor.io/profile/vyonizr)
+
+- https://unsplash.com/photos/27ERaPj8bPs
+
+## Acknowledgments
+
+- Afternoon background by [Harry Burk](https://unsplash.com/@harryjburk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/27ERaPj8bPs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
