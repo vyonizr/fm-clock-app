@@ -49,7 +49,7 @@ function App() {
       <div className="absolute left-0 top-0 h-full w-full font-inter text-white">
         <main className="relative z-10 flex h-full w-full flex-col">
           <div
-            className={`flex h-full flex-col justify-between bg-black bg-opacity-40 px-[1.625rem] pb-10 pt-8 md:pb-16 md:pl-16 md:pr-[8.125rem] md:pt-20 lg:px-[10.375rem] ${
+            className={`flex h-full flex-col justify-between bg-black bg-opacity-40 px-[1.625rem] pb-10 pt-8 transition-all md:pb-16 md:pl-16 md:pr-[8.125rem] md:pt-20 lg:px-[10.375rem] ${
               isMore ? "lg:py-14" : "lg:pb-24 lg:pt-14"
             }`}
           >
