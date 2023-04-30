@@ -1,39 +1,21 @@
 import useCurrentTime from '../hooks/useTime'
+import { GREETING } from "../constants"
+import { formatGreeting } from "../utils"
 
-const SUN_ICON_URL = '/assets/desktop/icon-sun.svg'
-const MOON_ICON_URL = '/assets/desktop/icon-moon.svg'
-
-const GREETING = {
-  MORNING: 'Good Morning',
-  AFTERNOON: 'Good Afternoon',
-  EVENING: 'Good Evening',
-}
+const SUN_ICON_URL = "/assets/desktop/icon-sun.svg"
+const MOON_ICON_URL = "/assets/desktop/icon-moon.svg"
 
 function Greeting() {
   const { currentTime } = useCurrentTime()
 
-  function formatGreeting(currentTime: Date): string {
-    const hours = currentTime.getHours()
-
-    if (hours < 5) {
-      return GREETING.EVENING
-    } else if (hours < 12) {
-      return GREETING.MORNING
-    } else if (hours < 18) {
-      return GREETING.AFTERNOON
-    }
-
-    return GREETING.EVENING
-  }
-
   function handleIcon(greeting: string) {
     switch (greeting) {
       case GREETING.EVENING:
-        return { alt: 'moon', url: MOON_ICON_URL }
+        return { alt: "moon", url: MOON_ICON_URL }
       case GREETING.MORNING:
       case GREETING.AFTERNOON:
       default:
-        return { alt: 'sun', url: SUN_ICON_URL }
+        return { alt: "sun", url: SUN_ICON_URL }
     }
   }
 

@@ -4,6 +4,7 @@ import {
   QUOTE_BASE_URL,
   CORS_WORLD_TIME_BASE_URL,
   CODETABS_CORS_WORLD_TIME_BASE_URL,
+  GREETING,
 } from "./constants"
 
 import { IIPAdress, IRegion, IRegionTime, IQuoteResponse } from "./types"
@@ -64,6 +65,20 @@ function determineDayOrNight(time: Date): string {
   return "night"
 }
 
+function formatGreeting(currentTime: Date): string {
+  const hours = currentTime.getHours()
+
+  if (hours < 5) {
+    return GREETING.EVENING
+  } else if (hours < 12) {
+    return GREETING.MORNING
+  } else if (hours < 18) {
+    return GREETING.AFTERNOON
+  }
+
+  return GREETING.EVENING
+}
+
 export {
   fetchIPAdress,
   fetchRegion,
@@ -71,4 +86,5 @@ export {
   fetchQuote,
   determineDayOrNight,
   fetchRegionTimeCodetabs,
+  formatGreeting,
 }
