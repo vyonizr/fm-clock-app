@@ -5,7 +5,12 @@ import Quote from "./components/Quote"
 import Background from "./components/Background"
 import TimeZoneDetails from "./components/TimeZoneDetails"
 import { IRegion, IRegionTime } from "./types"
-import { fetchIPAdress, fetchRegion, fetchRegionTime } from "./utils"
+import {
+  fetchIPAdress,
+  fetchRegion,
+  fetchRegionTime,
+  fetchRegionTimeCodetabs,
+} from "./utils"
 
 function App() {
   const [isMore, setIsMore] = React.useState(false)
@@ -33,8 +38,17 @@ function App() {
     }
 
     const getRegionTime = async (ip: string) => {
-      const data = await fetchRegionTime(ip)
-      setRegionTime(data)
+      try {
+        const data = await fetchRegionTime(ip)
+        setRegionTime(data)
+      } catch (error) {
+        try {
+          const data = await fetchRegionTimeCodetabs(ip)
+          setRegionTime(data)
+        } catch (error) {
+          console.error(error)
+        }
+      }
     }
 
     if (ipAddress.length > 0) {

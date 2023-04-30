@@ -3,6 +3,7 @@ import {
   REGION_TRACKING_BASE_URL,
   QUOTE_BASE_URL,
   CORS_WORLD_TIME_BASE_URL,
+  CODETABS_CORS_WORLD_TIME_BASE_URL,
 } from "./constants"
 
 import { IIPAdress, IRegion, IRegionTime, IQuoteResponse } from "./types"
@@ -35,22 +36,32 @@ async function fetchRegionTime(ipAddress: string): Promise<IRegionTime> {
   return responseJSON
 }
 
+async function fetchRegionTimeCodetabs(
+  ipAddress: string
+): Promise<IRegionTime> {
+  const response = await fetch(
+    `${CODETABS_CORS_WORLD_TIME_BASE_URL}/ip/${ipAddress}`
+  )
+  const responseJSON = await response.json()
+  return responseJSON
+}
+
 async function fetchQuote(): Promise<IQuoteResponse> {
-  const response = await fetch(`${QUOTE_BASE_URL}/random`);
-  const responseJSON = await response.json();
-  return responseJSON;
+  const response = await fetch(`${QUOTE_BASE_URL}/random`)
+  const responseJSON = await response.json()
+  return responseJSON
 }
 
 function determineDayOrNight(time: Date): string {
-  const hours = time.getHours();
+  const hours = time.getHours()
 
   if (hours < 5) {
-    return "night";
+    return "night"
   } else if (hours < 18) {
-    return "day";
+    return "day"
   }
 
-  return "night";
+  return "night"
 }
 
 export {
@@ -59,4 +70,5 @@ export {
   fetchRegionTime,
   fetchQuote,
   determineDayOrNight,
-};
+  fetchRegionTimeCodetabs,
+}
