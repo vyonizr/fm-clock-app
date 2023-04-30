@@ -50,7 +50,7 @@ function App() {
         <main className="relative z-10 flex h-full w-full flex-col">
           <div
             className={`flex h-full flex-col justify-between bg-black bg-opacity-40 px-[1.625rem] pb-10 pt-8 md:pb-16 md:pl-16 md:pr-[8.125rem] md:pt-20 lg:px-[10.375rem] ${
-              isMore ? "flex-col-reverse lg:py-14" : "lg:pb-24 lg:pt-14"
+              isMore ? "lg:py-14" : "lg:pb-24 lg:pt-14"
             }`}
           >
             <Quote isVisible={!isMore} />

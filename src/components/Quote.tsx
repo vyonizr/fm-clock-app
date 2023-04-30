@@ -11,8 +11,12 @@ interface IQuote {
 }
 
 function Quote({ isVisible }: IQuoteProps) {
+  const containerRef = React.useRef<HTMLDivElement>(null)
   const [quote, setQuote] = React.useState<IQuote | undefined>()
   const [isLoading, setIsLoading] = React.useState(true)
+  const [containerHeight, setContainerHeight] = React.useState<
+    number | undefined
+  >()
 
   const getQuote = React.useCallback(async () => {
     try {
@@ -36,11 +40,25 @@ function Quote({ isVisible }: IQuoteProps) {
     getQuote()
   }, [getQuote])
 
+  React.useEffect(() => {
+    if (containerRef.current) {
+      setContainerHeight(containerRef.current.offsetHeight)
+    }
+  }, [containerRef])
+
+  const containerStyle = React.useMemo(() => {
+    return {
+      maxHeight: isVisible ? `${containerHeight}px` : "0px",
+    }
+  }, [containerHeight, isVisible])
+
   return (
     <div
-      className={`grid grid-cols-[max-content_max-content] items-start gap-x-4 transition-opacity ${
-        isVisible ? "visible" : "hidden"
+      className={`grid grow grid-cols-[max-content_max-content] items-start gap-x-4 overflow-hidden transition-all ${
+        isVisible ? "opacity-100" : "opacity-0"
       }`}
+      ref={containerRef}
+      style={containerStyle}
     >
       <div
         className={`w-auto max-w-[18.125rem] text-xs transition-opacity md:max-w-[33.75rem] md:text-lg ${
