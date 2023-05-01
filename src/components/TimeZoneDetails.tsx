@@ -46,7 +46,7 @@ function TimeZoneDetails({
       }`}
       style={mainStyle}
     >
-      <div className="relative grid w-full grid-rows-4 gap-y-4 px-[1.625rem] text-[#303030] md:grid-flow-col md:grid-cols-[60%_40%] md:grid-rows-2 md:gap-y-12 md:px-16 lg:gap-y-16 lg:px-[10.375rem]">
+      <div className="relative grid w-full grid-rows-4 gap-y-4 px-[1.625rem] md:grid-flow-col md:grid-cols-[60%_40%] md:grid-rows-2 md:gap-y-12 md:px-16 lg:gap-y-16 lg:px-[10.375rem]">
         {timeDetails.map((timeDetail, i) => (
           <div
             className="grid grid-cols-2 items-center md:mt-0 md:grid-cols-none md:grid-rows-2 md:gap-y-2 lg:gap-y-8"
